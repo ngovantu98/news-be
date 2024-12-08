@@ -6,12 +6,16 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,21 +47,23 @@ public class News implements Serializable {
 	@Column(name = "`conclude`", length = 200)
 	private String conclude;
 
-//	@JsonIgnore
-//	@OneToOne(mappedBy = "news")
-//	private NewsSummary newsSummary;
+	@JsonIgnore
+	@OneToOne(mappedBy = "news")
+	private NewsSummary newsSummary;
 
 	@OneToMany(mappedBy = "news")
 	@Fetch(FetchMode.SUBSELECT)
 	private List<Image> image;
 
-	public News(int id, String name, String content, Date date, String header, String conclude, List<Image> image) {
+	public News(int id, String name, String content, Date date, String header, String conclude, NewsSummary newsSummary,
+			List<Image> image) {
 		this.id = id;
 		this.name = name;
 		this.content = content;
 		this.date = date;
 		this.header = header;
 		this.conclude = conclude;
+		this.newsSummary = newsSummary;
 		this.image = image;
 	}
 
@@ -111,6 +117,14 @@ public class News implements Serializable {
 
 	public void setConclude(String conclude) {
 		this.conclude = conclude;
+	}
+
+	public NewsSummary getNewsSummary() {
+		return newsSummary;
+	}
+
+	public void setNewsSummary(NewsSummary newsSummary) {
+		this.newsSummary = newsSummary;
 	}
 
 	public List<Image> getImage() {

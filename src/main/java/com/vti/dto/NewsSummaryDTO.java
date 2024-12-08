@@ -11,15 +11,14 @@ public class NewsSummaryDTO implements Serializable {
 	private String name;
 	private String image;
 	private String type;
-	private Category category;
-	private List<News> news;
+	private News news;
 
-	public NewsSummaryDTO(int id, String name, String image, String type, Category category, List<News> news) {
+	public NewsSummaryDTO(int id, String name, String image, String type, News news) {
 		this.id = id;
 		this.name = name;
 		this.image = image;
 		this.type = type;
-		this.category = category;
+		
 		this.news = news;
 	}
 
@@ -59,19 +58,12 @@ public class NewsSummaryDTO implements Serializable {
 		this.type = type;
 	}
 
-	public Category getCategory() {
-		return category;
-	}
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public List<News> getNews() {
+	public News getNews() {
 		return news;
 	}
 
-	public void setNews(List<News> news) {
+	public void setNews(News news) {
 		this.news = news;
 	}
 

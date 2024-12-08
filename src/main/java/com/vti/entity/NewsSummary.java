@@ -38,7 +38,7 @@ public class NewsSummary implements Serializable {
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "news_id")
 	private News news;
 
