@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 import com.vti.entity.Image;
 import com.vti.entity.News;
+import com.vti.entity.NewsSummary;
 
 public class NewsFormCreate {
 
@@ -13,22 +14,27 @@ public class NewsFormCreate {
 	private Date date;
 	private String header;
 	private String conclude;
+	private NewsSummary newsSummary;
 	private List<Image> image;
 
-	public NewsFormCreate(int id, String name, String content, Date date, String header, String conclude,
-			 List<Image> image) {
+	
 
+	public NewsFormCreate(int id, String name, String content, Date date, String header, String conclude,
+			NewsSummary newsSummary, List<Image> image) {
 		this.id = id;
 		this.name = name;
 		this.content = content;
 		this.date = date;
 		this.header = header;
 		this.conclude = conclude;
+		this.newsSummary = newsSummary;
 		this.image = image;
 	}
 
 	public NewsFormCreate() {
 	}
+
+	
 
 	public int getId() {
 		return id;
@@ -78,7 +84,13 @@ public class NewsFormCreate {
 		this.conclude = conclude;
 	}
 
-	
+	public NewsSummary getNewsSummary() {
+		return newsSummary;
+	}
+
+	public void setNewsSummary(NewsSummary newsSummary) {
+		this.newsSummary = newsSummary;
+	}
 
 	public List<Image> getImage() {
 		return image;
@@ -89,7 +101,7 @@ public class NewsFormCreate {
 	}
 
 	public News toEntity() {
-		return new News(id, name, content, date, header, conclude, image);
+		return new News(id, name, content, date, header, conclude,newsSummary, image);
 	}
 
 }
