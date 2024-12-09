@@ -2,9 +2,11 @@ package com.vti.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.vti.entity.User;
-import com.vti.form.UserFormCreate;
 import com.vti.repository.IUserRepository;
 
 
@@ -13,30 +15,23 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserRepository repository;
-
+	
+	@Override
 	public List<User> getAllUsers() {
 		return repository.findAll();
 	}
 
-	public User getUserByID(int id) {
-		return repository.findById(id).get();
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// Check user exists by username
+		User user = repository.findByUserName(username);
+
+		if (user == null) {
+			throw new UsernameNotFoundException(username);
+		}
+
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+				AuthorityUtils.createAuthorityList(user.getRole()));
 	}
-
-	public void createUser(UserFormCreate from) {
-		repository.save(from.toEntity());
-	}
-
-	public void updateUser(User user) {
-		repository.save(user);
-	}
-
-	public void deleteUser(int id) {
-		repository.deleteById(id);
-	}
-
-	public boolean isUserExistsByID(int id) {
-		return repository.existsById(id);
-	}
-
-
+	
 }

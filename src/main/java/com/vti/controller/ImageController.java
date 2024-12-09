@@ -42,7 +42,7 @@ public class ImageController {
 	@PostMapping()
 	public ResponseEntity<String> createImage(@RequestBody ImageFormCreate form) {
 		service.createImage(form);
-		return new ResponseEntity<String>("Tạo mới loại tin tức thành công!", HttpStatus.OK);
+		return new ResponseEntity<String>("Tạo mới ảnh thành công!", HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/{id}")
