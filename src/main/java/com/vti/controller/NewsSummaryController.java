@@ -13,15 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.vti.dto.NewsDTO;
 import com.vti.dto.NewsSummaryDTO;
-import com.vti.entity.News;
 import com.vti.entity.NewsSummary;
-import com.vti.form.NewsFormCreate;
 import com.vti.form.NewsSummaryFormCreate;
-import com.vti.service.INewsService;
 import com.vti.service.INewsSummaryService;
 
 @RestController

@@ -3,8 +3,6 @@ package com.vti.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,8 +18,8 @@ public class User implements Serializable {
 	@Column(name = "`id`")
 	private int id;
 
-	@Column(name = "`userName`", length = 50)
-	private String userName;
+	@Column(name = "`username`", length = 50)
+	private String username;
 
 	@Column(name = "`password`", length = 50)
 	private String password;
@@ -32,14 +30,13 @@ public class User implements Serializable {
 	@Column(name = "`fullName`", length = 50)
 	private String fullName;
 
-	@Column(name = "`role`")
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	@Column(name = "`role`", length = 50)
+	private String role;
 
-	public User(int id, String userName, String password, String email, String fullName, Role role) {
+	public User(int id, String username, String password, String email, String fullName, String role) {
 
 		this.id = id;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.fullName = fullName;
@@ -58,12 +55,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -90,24 +87,12 @@ public class User implements Serializable {
 		this.fullName = fullName;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", email=" + email
-				+ ", fullName=" + fullName + ", role=" + role + "]";
-	}
-
-	public enum Role {
-		CLIENT, MANAGE;
-	}
-
-
 
 }

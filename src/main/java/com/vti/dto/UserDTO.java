@@ -4,83 +4,65 @@ import java.sql.Date;
 
 public class UserDTO {
 
-	private String name;
-	private String content;
-	private Date date;
-	private String header;
-	private String conclude;
-	private int categoryId;
-	private String categoryName;
+	private int id;
+	private String username;
+	private String password;
+	private String email;
+	private String fullName;
 
-	public UserDTO(String name, String content, Date date, String header, String conclude, int categoryId,
-			String categoryName) {
-		this.name = name;
-		this.content = content;
-		this.date = date;
-		this.header = header;
-		this.conclude = conclude;
-		this.categoryId = categoryId;
-		this.categoryName = categoryName;
+	
+	public UserDTO(int id, String username, String password, String email, String fullName) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.fullName = fullName;
 	}
 
 	public UserDTO() {
 
 	}
 
-	public String getName() {
-		return name;
+	public int getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getContent() {
-		return content;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getHeader() {
-		return header;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setHeader(String header) {
-		this.header = header;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getConclude() {
-		return conclude;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setConclude(String conclude) {
-		this.conclude = conclude;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
+	
 
 }
