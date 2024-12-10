@@ -32,7 +32,7 @@ public class JWTAuthenticationFilter extends AbstractAuthenticationProcessingFil
         
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
-                		request.getParameter("username"),
+                		request.getParameter("userName"),
                 		request.getParameter("password"),
                         Collections.emptyList()
                 )

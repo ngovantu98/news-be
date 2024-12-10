@@ -3,6 +3,7 @@ package com.vti.dto;
 import java.io.Serializable;
 import com.vti.entity.News;
 
+@SuppressWarnings("serial")
 public class ImageDTO implements Serializable {
 
 	private String name;

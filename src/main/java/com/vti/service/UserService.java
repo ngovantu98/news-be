@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.vti.entity.User;
+import com.vti.form.UserFormCreate;
 import com.vti.repository.IUserRepository;
 
 
@@ -30,8 +31,12 @@ public class UserService implements IUserService {
 			throw new UsernameNotFoundException(username);
 		}
 
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
 				AuthorityUtils.createAuthorityList(user.getRole()));
+	}
+	
+	public void createUser(UserFormCreate from) {
+		repository.save(from.toEntity());
 	}
 	
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import com.vti.entity.Image;
 import com.vti.entity.NewsSummary;
 
+@SuppressWarnings("serial")
 public class NewsDTO implements Serializable {
 
 	private int id;

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,7 +49,7 @@ public class News implements Serializable {
 	private String conclude;
 
 	@JsonIgnore
-	@OneToOne(mappedBy = "news")
+	@OneToOne(mappedBy = "news",fetch = FetchType.LAZY)
 	private NewsSummary newsSummary;
 
 	@OneToMany(mappedBy = "news")
