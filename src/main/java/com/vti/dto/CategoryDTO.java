@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import com.vti.entity.NewsSummary;
 
+@SuppressWarnings("serial")
 public class CategoryDTO implements Serializable {
 
 	private String name;

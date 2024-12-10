@@ -1,19 +1,23 @@
 package com.vti.dto;
 
-import java.sql.Date;
+import java.io.Serializable;
 
-public class UserDTO {
+@SuppressWarnings("serial")
+public class UserDTO implements Serializable {
 
 	private int id;
-	private String username;
+	private String userName;
 	private String password;
 	private String email;
 	private String fullName;
 
 	
-	public UserDTO(int id, String username, String password, String email, String fullName) {
+	
+
+	public UserDTO(int id, String userName, String password, String email, String fullName) {
+	
 		this.id = id;
-		this.username = username;
+		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.fullName = fullName;
@@ -31,12 +35,12 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -64,5 +68,4 @@ public class UserDTO {
 	}
 
 	
-
 }

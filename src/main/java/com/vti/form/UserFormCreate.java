@@ -5,7 +5,7 @@ import com.vti.entity.User;
 public class UserFormCreate {
 
 	private int id;
-	private String username;
+	private String userName;
 	private String password;
 	private String email;
 	private String fullName;
@@ -15,68 +15,21 @@ public class UserFormCreate {
 	}
 
 	
-	public int getId() {
-		return id;
-	}
+	
+	public UserFormCreate(int id, String userName, String password, String email, String fullName, String role) {
 
-
-	public void setId(int id) {
 		this.id = id;
-	}
-
-
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
+		this.userName = userName;
 		this.password = password;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
 		this.email = email;
-	}
-
-
-	public String getFullName() {
-		return fullName;
-	}
-
-
-	public void setFullName(String fullName) {
 		this.fullName = fullName;
-	}
-
-
-	public String getRole() {
-		return role;
-	}
-
-
-	public void setRole(String role) {
 		this.role = role;
 	}
 
 
+
 	public User toEntity() {
-		return new User(id, username, password, email, fullName, role);
+		return new User(id, userName, password, email, fullName, role);
 	}
 
 }

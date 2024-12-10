@@ -6,7 +6,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import javax.servlet.http.HttpServletRequest;
-
 import java.util.Collections;
 import java.util.Date;
 

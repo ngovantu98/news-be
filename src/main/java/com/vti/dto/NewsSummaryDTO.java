@@ -1,10 +1,9 @@
 package com.vti.dto;
 
 import java.io.Serializable;
-import java.util.List;
-import com.vti.entity.Category;
 import com.vti.entity.News;
 
+@SuppressWarnings("serial")
 public class NewsSummaryDTO implements Serializable {
 
 	private int id;
