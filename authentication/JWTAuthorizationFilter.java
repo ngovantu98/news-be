@@ -1,4 +1,4 @@
-package com.vti.login;
+package com.vti.config.authentication;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;

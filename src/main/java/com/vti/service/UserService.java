@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.vti.entity.User;
 import com.vti.form.UserFormCreate;
@@ -16,6 +17,9 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserRepository repository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@Override
 	public List<User> getAllUsers() {
@@ -36,7 +40,15 @@ public class UserService implements IUserService {
 	}
 	
 	public void createUser(UserFormCreate from) {
+		
+		// endcode password
+		from.setPassword(passwordEncoder.encode(from.getPassword()));
 		repository.save(from.toEntity());
+	}
+	
+	@Override
+	public boolean existsUserByUserName(String userName) {
+		return repository.existsByUserName(userName);
 	}
 	
 }

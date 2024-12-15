@@ -1,4 +1,4 @@
-package com.vti.login;
+package com.vti.config.authentication;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -15,13 +15,18 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.vti.entity.User;
+import com.vti.service.IUserService;
 import com.vti.service.JWTTokenService;
 
 public class JWTAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 	
-    public JWTAuthenticationFilter(String url, AuthenticationManager authManager) {
+	private IUserService userService;
+	
+    public JWTAuthenticationFilter(String url, AuthenticationManager authManager, IUserService userService) {
         super(new AntPathRequestMatcher(url));
         setAuthenticationManager(authManager);
+        this.userService = userService;
     }
 
     @Override
@@ -32,19 +37,22 @@ public class JWTAuthenticationFilter extends AbstractAuthenticationProcessingFil
         
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
-                		request.getParameter("userName"),
+                		request.getParameter("username"),
                 		request.getParameter("password"),
                         Collections.emptyList()
                 )
         );
     }
 
-    @Override
-    protected void successfulAuthentication(
-    		HttpServletRequest request, 
-    		HttpServletResponse response, 
-    		FilterChain chain, 
-    		Authentication authResult) throws IOException, ServletException {
-        JWTTokenService.addJWTTokenToHeader(response, authResult.getName());
-    }
+//    @Override
+//    protected void successfulAuthentication(
+//    		HttpServletRequest request, 
+//    		HttpServletResponse response, 
+//    		FilterChain chain, 
+//    		Authentication authResult) throws IOException, ServletException {
+//    	// infor user
+//    	User user = userService.findUserByUserName(authResult.getName());
+//    	
+//        JWTTokenService.addJWTTokenAndUserInfoToBody(response, user);
+//    }
 }
