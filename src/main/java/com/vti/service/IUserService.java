@@ -11,4 +11,6 @@ public interface IUserService extends UserDetailsService {
 	
 	public void createUser(UserFormCreate from);
 
+	boolean existsUserByUserName(String userName);
+
 }

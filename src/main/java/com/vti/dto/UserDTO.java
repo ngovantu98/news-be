@@ -1,38 +1,20 @@
 package com.vti.dto;
 
-import java.io.Serializable;
+public class UserDTO {
 
-@SuppressWarnings("serial")
-public class UserDTO implements Serializable {
-
-	private int id;
 	private String userName;
 	private String password;
-	private String email;
 	private String fullName;
 
-	
-	
-
-	public UserDTO(int id, String userName, String password, String email, String fullName) {
-	
-		this.id = id;
+	public UserDTO(String userName, String password, String fullName) {
+		super();
 		this.userName = userName;
 		this.password = password;
-		this.email = email;
 		this.fullName = fullName;
 	}
 
 	public UserDTO() {
 
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getUserName() {
@@ -51,14 +33,6 @@ public class UserDTO implements Serializable {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getFullName() {
 		return fullName;
 	}
@@ -67,5 +41,4 @@ public class UserDTO implements Serializable {
 		this.fullName = fullName;
 	}
 
-	
 }
